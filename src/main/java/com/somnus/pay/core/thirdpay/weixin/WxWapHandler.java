@@ -29,7 +29,7 @@ public class WxWapHandler extends AbstractWxHandler {
 	private final static Logger LOGGER = LoggerFactory.getLogger(WxWapHandler.class);
 	
 	public WxWapHandler() {
-		super(PayChannel.WxWapPay, "", "", "", "");
+		super(PayChannel.WxWapPay, WxConfig.WX_NATIVE_API_KEY, WxConfig.WX_NATIVE_APP_ID, WxConfig.WX_NATIVE_MCH_ID );
 	}
 
 	@Override

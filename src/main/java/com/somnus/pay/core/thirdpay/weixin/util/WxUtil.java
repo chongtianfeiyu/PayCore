@@ -44,12 +44,5 @@ public class WxUtil {
 
         return enc;
     }
-    /**
-     * 获取项目根路径
-     * @param request
-     * @return
-     */
-    public static String getRootPath(HttpServletRequest request){
-    	return request.getSession().getServletContext().getRealPath("/");
-    }
+    
 }

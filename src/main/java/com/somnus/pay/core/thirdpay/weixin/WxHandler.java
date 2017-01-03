@@ -15,7 +15,6 @@ import com.somnus.pay.core.enums.PayChannel;
 import com.somnus.pay.core.support.util.WebUtil;
 import com.somnus.pay.core.thirdpay.RequestParameter;
 import com.somnus.pay.core.thirdpay.weixin.config.WxConfig;
-import com.somnus.pay.core.thirdpay.weixin.util.WxUtil;
 import com.somnus.pay.core.thirdpay.weixin.util.XMLUtil;
 import com.somnus.pay.core.pojo.PaymentOrder;
 
@@ -25,7 +24,7 @@ public class WxHandler extends AbstractWxHandler {
 	private final static Logger LOGGER = LoggerFactory.getLogger(WxHandler.class);
 	
 	public WxHandler() {
-		super(PayChannel.WxPay, "", "", "", "");
+		super(PayChannel.WxPay, WxConfig.WX_NATIVE_API_KEY, WxConfig.WX_NATIVE_APP_ID, WxConfig.WX_NATIVE_MCH_ID);
 	}
 
 	@Override
@@ -42,7 +41,7 @@ public class WxHandler extends AbstractWxHandler {
 			String returnCode = map.get("return_code");
 			String resultCode = map.get("result_code");
 			if (returnCode.equalsIgnoreCase("SUCCESS") && resultCode.equalsIgnoreCase("SUCCESS")) {
-				return Request.Post(WxUtil.getRootPath(request) + "/third/wxcode.htm").bodyForm(Form.form()
+				return Request.Post(WebUtil.getRootPath() + "/third/wxcode.htm").bodyForm(Form.form()
 						.add("finalAmount", parameter.getParameter().getAmount().toString())
 						.add("orderId", parameter.getParameter().getOrderId())
 						.build())

@@ -87,4 +87,10 @@ public class MsgCodeList {
 	
 	/** 微信oauth2授权失败*/
 	public static final String ERROR_500002 = "500002";
+	
+	/** 支付宝支付结果通知数据格式转换错误*/
+	public static final String ERROR_600001 = "600001";
+	
+	/** 支付宝国际支付订单详情查询失败*/
+	public static final String ERROR_600002 = "600002";
 }

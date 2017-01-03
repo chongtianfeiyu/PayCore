@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import org.springframework.stereotype.Component;
 
+import com.somnus.pay.core.support.util.ConfigUtil;
+
 /**
  * @ClassName:     WxConfig.java
  * @Description:   微信支付基础配置类
@@ -13,6 +15,25 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class WxConfig {
+	
+	/** 微信PCNative */
+	/** 商户号*/
+	public static final String WX_NATIVE_MCH_ID = ConfigUtil.getString("WX_NATIVE_MCH_ID");
+	/** 服务号的应用号*/
+	public static final String WX_NATIVE_APP_ID= ConfigUtil.getString("WX_NATIVE_APP_ID");
+	/** API密钥*/
+	public static final String WX_NATIVE_API_KEY = ConfigUtil.getString("WX_NATIVE_API_KEY");
+
+	/**  微信APP */
+	/** 商户号*/
+	public static final String WX_APP_MCH_ID = ConfigUtil.getString("WX_APP_MCH_ID");
+	/** 服务号的应用号*/
+	public static final String WX_APP_APP_ID= ConfigUtil.getString("WX_APP_APP_ID");
+	/** API密钥*/
+	public static final String WX_APP_API_KEY = ConfigUtil.getString("WX_APP_API_KEY");
+	
+	/** 应用密钥*/
+	public static final String APP_SECRET = ConfigUtil.getString("APP_SECRET");
 	
 	/** appId*/
 	public final static String APP_ID = "app_id";

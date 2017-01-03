@@ -36,7 +36,7 @@ public class WxAppHandler extends AbstractWxHandler {
 	private String notifyAppUrl;
 	
 	public WxAppHandler() {
-		super(PayChannel.WxAppPay, "", "", "", "");
+		super(PayChannel.WxAppPay, WxConfig.WX_APP_API_KEY, WxConfig.WX_APP_APP_ID, WxConfig.WX_APP_MCH_ID );
 	}
 
 	@Override
@@ -141,7 +141,7 @@ public class WxAppHandler extends AbstractWxHandler {
 		}
 		parameters.put("mch_id", partnerid);	//商户号
 		parameters.put("nonce_str", PayCommonUtil.createNoncestr());	//随机码
-		parameters.put("notify_url", WxUtil.getRootPath(request) + notifyAppUrl);	//支付成功后回调的地址
+		parameters.put("notify_url", WebUtil.getRootPath() + notifyAppUrl);	//支付成功后回调的地址
 		String orderId = paymentOrder.getOrderId();	// 商家订单号
 		//合并支付的订单
 		if (paymentOrder.getIsCombined()) {

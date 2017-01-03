@@ -47,5 +47,14 @@ public class WebUtil {
         }
         return params;
     }
+    
+    /**
+     * 获取项目根路径
+     * @param request
+     * @return
+     */
+    public static String getRootPath(){
+    	return getRequest().getSession().getServletContext().getRealPath("/");
+    }
 
 }

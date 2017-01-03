@@ -11,7 +11,7 @@ import java.util.List;
  * @Date           2016年12月28日 上午10:37:42
  */
 public enum PayChannel {
-	AliPay(11, "支付宝"), AliWapPay(12, "支付宝(WAP)"),AliHKWapPay(13, "支付宝国际(香港)"),
+	AliAppPay(11, "支付宝"), AliWapPay(12, "支付宝(WAP)"),AliHKWapPay(13, "支付宝国际(香港)"),
 	
 	BocomPay(21, "交行(网银)"), BocomWapPay(22, "交行(WAP网银)"), 
 	
@@ -81,7 +81,7 @@ public enum PayChannel {
 	public static PayChannel getPayType(Integer value) {
 		PayChannel payType = null;
 		if (value == null)
-			payType = PayChannel.AliPay;
+			payType = PayChannel.AliAppPay;
 		for (PayChannel pt : PayChannel.values()) {
 			if (pt.getValue().equals(value))
 				payType = pt;

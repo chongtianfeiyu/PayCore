@@ -31,6 +31,7 @@ import com.somnus.pay.core.support.common.Assert;
 import com.somnus.pay.core.support.common.MsgCodeList;
 import com.somnus.pay.core.support.exceptions.PayException;
 import com.somnus.pay.core.support.util.SystemUtil;
+import com.somnus.pay.core.support.util.WebUtil;
 import com.somnus.pay.core.thirdpay.PaymentChannelHandler;
 import com.somnus.pay.core.thirdpay.RequestParameter;
 import com.somnus.pay.core.thirdpay.weixin.config.WxConfig;
@@ -64,14 +65,12 @@ public abstract class AbstractWxHandler extends PaymentChannelHandler {
 	protected String key;
 	protected String appId;
 	protected String mchId;
-	protected String secret;
 	
-	public AbstractWxHandler(PayChannel channel, String key, String appId, String mchId,String secret) {
+	public AbstractWxHandler(PayChannel channel, String key, String appId, String mchId) {
 		super(channel);
 		this.key = key;
 		this.appId = appId;
 		this.mchId = mchId;
-		this.secret = secret;
 	}
 
 	@Override
@@ -158,7 +157,7 @@ public abstract class AbstractWxHandler extends PaymentChannelHandler {
         parameters.put("mch_id", mchId);	//商户号
         parameters.put("nonce_str", PayCommonUtil.createNoncestr());	//随机码
         String notify_Url = isWap ? notifyUrl:notifyWapUrl;
-        parameters.put("notify_url", WxUtil.getRootPath(request) + notify_Url);	//支付成功后回调的地址
+        parameters.put("notify_url", WebUtil.getRootPath() + notify_Url);	//支付成功后回调的地址
         String  orderId = paymentOrder.getOrderId();	// 商家订单号
         //合并支付的订单
         if (paymentOrder.getIsCombined()) {
@@ -206,7 +205,7 @@ public abstract class AbstractWxHandler extends PaymentChannelHandler {
 				try {
 					access_token_result = Request.Post(WxConfig.OAUTH2_URL).bodyForm(Form.form()
 							.add("appid", appId)
-							.add("secret", secret)
+							.add("secret", WxConfig.APP_SECRET)
 							.add("code", paymentOrder.getCode())
 							.add("grant_type", "authorization_code")
 							.build())
