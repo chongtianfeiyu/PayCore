@@ -30,9 +30,7 @@ public class XMLUtil {
         SAXBuilder builder = new SAXBuilder();
         Document doc = builder.build(in);
         Element root = doc.getRootElement();
-        List<Element> list = root.getChildren();
-        Iterator<Element> it = list.iterator();
-        while (it.hasNext()) {
+        for(Iterator<Element> it = root.getChildren().iterator(); it.hasNext();){
             Element element = it.next();
             String k = element.getName();
             String v = "";
@@ -57,9 +55,8 @@ public class XMLUtil {
      */
     public static String getChildrenText(List<Element> children) {
         StringBuffer sb = new StringBuffer();
-        Iterator<Element> it = children.iterator();
-        while (it.hasNext()) {
-            Element element = (Element) it.next();
+        for(Iterator<Element> it = children.iterator(); it.hasNext();){
+            Element element = it.next();
             String name = element.getName();
             String value = element.getTextNormalize();
             List<Element> list = element.getChildren();
