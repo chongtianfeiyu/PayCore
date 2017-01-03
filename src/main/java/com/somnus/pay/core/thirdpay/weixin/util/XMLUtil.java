@@ -14,12 +14,6 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-/**
- * xml工具类
- * @author mike
- *
- */
-@SuppressWarnings("rawtypes")
 public class XMLUtil {
 
     /**
@@ -31,37 +25,29 @@ public class XMLUtil {
      */
     public static Map<String, String> doXMLParse(String strxml) throws JDOMException, IOException {
         strxml = strxml.replaceFirst("encoding=\".*\"", "encoding=\"UTF-8\"");
-
-        if (null == strxml || "".equals(strxml)) {
-            return null;
-        }
-
-        Map<String, String> m = new HashMap<String, String>();
-
+        Map<String, String> map = new HashMap<String, String>();
         InputStream in = new ByteArrayInputStream(strxml.getBytes("UTF-8"));
         SAXBuilder builder = new SAXBuilder();
         Document doc = builder.build(in);
         Element root = doc.getRootElement();
-        List list = root.getChildren();
-        Iterator it = list.iterator();
+        List<Element> list = root.getChildren();
+        Iterator<Element> it = list.iterator();
         while (it.hasNext()) {
-            Element e = (Element) it.next();
-            String k = e.getName();
+            Element element = it.next();
+            String k = element.getName();
             String v = "";
-            List children = e.getChildren();
+            List<Element> children = element.getChildren();
             if (children.isEmpty()) {
-                v = e.getTextNormalize();
+                v = element.getTextNormalize();
             } else {
-                v = XMLUtil.getChildrenText(children);
+                v = getChildrenText(children);
             }
 
-            m.put(k, v);
+            map.put(k, v);
         }
-
         //关闭流
         in.close();
-
-        return m;
+        return map;
     }
 
     /**
@@ -69,24 +55,21 @@ public class XMLUtil {
      * @param children
      * @return String
      */
-    public static String getChildrenText(List children) {
+    public static String getChildrenText(List<Element> children) {
         StringBuffer sb = new StringBuffer();
-        if (!children.isEmpty()) {
-            Iterator it = children.iterator();
-            while (it.hasNext()) {
-                Element e = (Element) it.next();
-                String name = e.getName();
-                String value = e.getTextNormalize();
-                List list = e.getChildren();
-                sb.append("<" + name + ">");
-                if (!list.isEmpty()) {
-                    sb.append(XMLUtil.getChildrenText(list));
-                }
-                sb.append(value);
-                sb.append("</" + name + ">");
+        Iterator<Element> it = children.iterator();
+        while (it.hasNext()) {
+            Element element = (Element) it.next();
+            String name = element.getName();
+            String value = element.getTextNormalize();
+            List<Element> list = element.getChildren();
+            sb.append("<" + name + ">");
+            if (!list.isEmpty()) {
+                sb.append(getChildrenText(list));
             }
+            sb.append(value);
+            sb.append("</" + name + ">");
         }
-
         return sb.toString();
     }
 
