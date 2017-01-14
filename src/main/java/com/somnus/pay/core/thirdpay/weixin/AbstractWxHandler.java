@@ -157,7 +157,7 @@ public abstract class AbstractWxHandler extends PaymentChannelHandler {
         parameters.put("mch_id", mchId);	//商户号
         parameters.put("nonce_str", PayCommonUtil.createNoncestr());	//随机码
         String notify_Url = isWap ? notifyUrl:notifyWapUrl;
-        parameters.put("notify_url", WebUtil.getRootPath() + notify_Url);	//支付成功后回调的地址
+        parameters.put("notify_url", WebUtil.getRootPath(request) + notify_Url);	//支付成功后回调的地址
         String  orderId = paymentOrder.getOrderId();	// 商家订单号
         //合并支付的订单
         if (paymentOrder.getIsCombined()) {

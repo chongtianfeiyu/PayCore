@@ -20,16 +20,6 @@ public class WebUtil {
         return ((ServletWebRequest) RequestContextHolder.getRequestAttributes()).getResponse();
     }
 
-    @SuppressWarnings("unchecked")
-	public static Map<String, String> getParamMap(){
-        HttpServletRequest request = getRequest();
-        Map<String, String> params = null;
-        if(request != null) {
-            params = getParamMap(request.getParameterMap());
-        }
-        return params;
-    }
-
     public static Map<String, String> getParamMap(Map<String, ?> paramMap){
         Map<String, String> params = null;
         if (paramMap != null && !paramMap.isEmpty()) {
@@ -49,12 +39,23 @@ public class WebUtil {
     }
     
     /**
-     * 获取项目根路径
+     * 获取项目访问根路径
      * @param request
      * @return
      */
+    public static String getRootPath(HttpServletRequest request){
+    	String path = request.getContextPath();
+    	return request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    }
+    
+    /**
+     * 获取项目访问根路径
+     * @return
+     */
     public static String getRootPath(){
-    	return getRequest().getSession().getServletContext().getRealPath("/");
+    	HttpServletRequest request = getRequest();
+    	String path = request.getContextPath();
+    	return request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     }
 
 }

@@ -1,6 +1,6 @@
 package com.somnus.pay.core.thirdpay.alipay.config;
 
-import com.somnus.pay.core.support.util.ConfigUtil;
+import com.somnus.pay.core.support.util.BundleUtil;
 
 /**
  * @ClassName:     AlipayConfig.java
@@ -11,14 +11,14 @@ import com.somnus.pay.core.support.util.ConfigUtil;
  */
 public class AlipayConfig {
 	/** 合作身份者ID，以2088开头由16位纯数字组成的字符串 */
-    public static final String ALI_SELLER_ID = ConfigUtil.getString("ALI_SELLER_ID");
+    public static final String ALI_SELLER_ID = BundleUtil.getString("ALI_SELLER_ID");
     /** 商户号*/
-    public static final String ALI_PARTNER = ConfigUtil.getString("ALI_PARTNER");
+    public static final String ALI_PARTNER = BundleUtil.getString("ALI_PARTNER");
     /** 商户的私钥*/
-    public static final String ALI_KEY = ConfigUtil.getString("ALI_KEY");
-    public static final String ALI_PUBLIC_KEY = ConfigUtil.getString("ALI_PUBLIC_KEY");                                // 支付宝的公钥，如果签名方式设置为“0001”时，请设置该参数
-    public static final String ALI_PRIVATE_KEY = ConfigUtil.getString("ALI_PRIVATE_KEY");
-	public static final String ALI_PRIVATE_KEY_PKCS8 = ConfigUtil.getString("ALI_PRIVATE_KEY_PKCS8");
+    public static final String ALI_KEY = BundleUtil.getString("ALI_KEY");
+    public static final String ALI_PUBLIC_KEY = BundleUtil.getString("ALI_PUBLIC_KEY");                                // 支付宝的公钥，如果签名方式设置为“0001”时，请设置该参数
+    public static final String ALI_PRIVATE_KEY = BundleUtil.getString("ALI_PRIVATE_KEY");
+	public static final String ALI_PRIVATE_KEY_PKCS8 = BundleUtil.getString("ALI_PRIVATE_KEY_PKCS8");
 
 	/** 字符编码格式 目前支持 gbk 或 utf-8*/
     public static final String INPUT_CHARSET 	= "utf-8";
@@ -30,16 +30,16 @@ public class AlipayConfig {
     public static final String PAY_SERVICE_NAME = "mobile.securitypay.pay";
     
     /** PC 支付宝回调地址 */
-    public static final String WEB_NOTIFY_URL = ConfigUtil.getString("ALI_WEB_BACK_URL");
-    public static final String WEB_RETURN_URL = ConfigUtil.getString("ALI_WEB_FRONT_URL");
+    public static final String WEB_NOTIFY_URL = BundleUtil.getString("ALI_WEB_BACK_URL");
+    public static final String WEB_RETURN_URL = BundleUtil.getString("ALI_WEB_FRONT_URL");
     
-    public static final String WEB_REFUND_URL = ConfigUtil.getString("ALI_WEB_REFUND_URL");
+    public static final String WEB_REFUND_URL = BundleUtil.getString("ALI_WEB_REFUND_URL");
     /** wap 支付宝回调地址 */
-    public static final String WAP_NOTIFY_URL = ConfigUtil.getString("ALI_WAP_BACK_URL");
-    public static final String WAP_RETURN_URL = ConfigUtil.getString("ALI_WAP_FRONT_URL");
+    public static final String WAP_NOTIFY_URL = BundleUtil.getString("ALI_WAP_BACK_URL");
+    public static final String WAP_RETURN_URL = BundleUtil.getString("ALI_WAP_FRONT_URL");
     
     /** APP 支付宝回调地址*/
-    public static final String APP_NOTIFY_URL = ConfigUtil.getString("ALI_APP_BACK_URL");
+    public static final String APP_NOTIFY_URL = BundleUtil.getString("ALI_APP_BACK_URL");
 
     /** 支付宝常量*/
     public static final String TRADE_FINISHED        = "TRADE_FINISHED";
@@ -77,8 +77,8 @@ public class AlipayConfig {
     public static final String CROSS_PAY_SIGN_TYPE = "MD5";
 
     /** 阿里测试环境 */
-    public static String TEST_KEY = ConfigUtil.getString("ALI_TEST_KEY"); // 商户的私钥
-    public static String TEST_PARTNER = ConfigUtil.getString("ALI_TEST_PARTNER"); // 商户的私钥
+    public static String TEST_KEY = BundleUtil.getString("ALI_TEST_KEY"); // 商户的私钥
+    public static String TEST_PARTNER = BundleUtil.getString("ALI_TEST_PARTNER"); // 商户的私钥
     public static final String TEST_CROSS_PAY_REQUEST_WAP = "http://openapi.alipaydev.com/gateway.do"; //测试api接口
     
     public static final String WAP_PAY_SERVICE_NAME = "alipay.wap.create.direct.pay.by.user";

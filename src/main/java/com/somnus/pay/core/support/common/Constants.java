@@ -1,6 +1,6 @@
 package com.somnus.pay.core.support.common;
 
-import com.somnus.pay.core.support.util.ConfigUtil;
+import com.somnus.pay.core.support.util.BundleUtil;
 
 public class Constants {
     // APP扫码支付
@@ -11,35 +11,35 @@ public class Constants {
     /**
      *支付回调地址（根据环境）
      */
-    public final static String PAY_BACK_DOMAIN = ConfigUtil.getString("backDomain");
+    public final static String PAY_BACK_DOMAIN = BundleUtil.getString("backDomain");
     /**
      *支付回调地址（online配置）
      */
-    public final static String PAY_ONLINE_BACK_DOMAIN = ConfigUtil.getString("onlineBackDomain");
+    public final static String PAY_ONLINE_BACK_DOMAIN = BundleUtil.getString("onlineBackDomain");
     /**
      *B5Mserver地址
      */
-    public final static String B5M_DOMAIN = ConfigUtil.getString("www.server");
+    public final static String B5M_DOMAIN = BundleUtil.getString("www.server");
     /**
      *B5Cserver地址
      */
-    public final static String B5C_WAP_DOMAIN = ConfigUtil.getString("b5cwap.server");
+    public final static String B5C_WAP_DOMAIN = BundleUtil.getString("b5cwap.server");
     /**
      *B5M手机端server地址
      */
-    public final static String B5M_MOBILE_DOMAIN = ConfigUtil.getString("m.server");
+    public final static String B5M_MOBILE_DOMAIN = BundleUtil.getString("m.server");
     /**
      *用户中心server地址
      */
-    public final static String UCENTER_DOMAIN = ConfigUtil.getString("ucenter.server");
+    public final static String UCENTER_DOMAIN = BundleUtil.getString("ucenter.server");
     /**
      *AppServer地址为请求获取短链接
      */
-    public final static String APP_DOMAIN = ConfigUtil.getString("app.server");
+    public final static String APP_DOMAIN = BundleUtil.getString("app.server");
     /**
      *配置新成功页面地址
      */
-    public final static String NEW_RESULT_PATH = ConfigUtil.getString("NEW_RESULT_PATH");
+    public final static String NEW_RESULT_PATH = BundleUtil.getString("NEW_RESULT_PATH");
     
     /**
      * 区分是否合并付款的前缀
@@ -59,7 +59,7 @@ public class Constants {
     /**
      * 获取配置文件环境名-》stage，prod，online为空
      */
-    public final static String PAY_ENVIRONMENT  = ConfigUtil.getString("environment");
+    public final static String PAY_ENVIRONMENT  = BundleUtil.getString("environment");
 
     //是否需要区分境外支付KEY
     public static final String IS_NEED_CROSSPAY = "IS_NEED_CROSSPAY";
