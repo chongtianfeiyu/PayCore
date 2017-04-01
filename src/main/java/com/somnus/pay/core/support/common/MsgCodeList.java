@@ -79,6 +79,9 @@ public class MsgCodeList {
 	/** 查询出的结果集为空 */
 	public static final String ERROR_301014 = "301014";
 	
+	/** 参数校验失败:{0} */
+	public static final String ERROR_301015 = "301015";
+	
 	/** 解析微信支付回调参数(XML)失败*/
 	public static final String ERROR_500000 = "500000";
 	

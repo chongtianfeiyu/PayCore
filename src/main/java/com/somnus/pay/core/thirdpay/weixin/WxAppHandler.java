@@ -148,7 +148,7 @@ public class WxAppHandler extends AbstractWxHandler {
 			orderId = paymentOrder.getParentOrderId();
 		}
 		parameters.put("out_trade_no", orderId);	//订单号
-		String user_ip = SystemUtil.getIpAddress(request);
+		String user_ip = SystemUtil.getRemoteIP(request);
 		if(StringUtils.isBlank(user_ip) || user_ip.indexOf("0:0:0:0") != -1){  //测试使用
 			user_ip = "116.231.217.212";
 		}

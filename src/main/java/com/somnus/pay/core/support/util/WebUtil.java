@@ -38,6 +38,15 @@ public class WebUtil {
         return params;
     }
     
+    public static Map<String, String> getParamMap(){
+        HttpServletRequest request = getRequest();
+        Map<String, String> params = null;
+        if(request != null) {
+            params = getParamMap(request.getParameterMap());
+        }
+        return params;
+    }
+    
     /**
      * 获取项目访问根路径
      * @param request

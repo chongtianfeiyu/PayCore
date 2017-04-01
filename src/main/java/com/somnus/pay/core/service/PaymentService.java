@@ -32,5 +32,12 @@ public interface PaymentService {
 	 */
 	public void updateOrder2Success(PaymentResult paymentResult);
 
+	/**
+	 * 兼容老业务判断sourceId是否可以使用帮钻支付(帮钻充值等)
+	 * @param sourceId
+	 * @return
+	 */
+	public boolean isBZEnabledSoucreIds(Integer source);
+
 
 }
